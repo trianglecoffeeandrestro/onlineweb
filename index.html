@@ -121,22 +121,50 @@
       color: var(--muted);
     }
 
-    @media (max-width: 700px) {
-      .buttons {
-        grid-template-columns: 1fr;
-      }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      padding: 10px;
+    }
 
-      .button.full {
-        grid-column: auto;
-      }
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-      .image-section {
-        min-height: 240px;
-      }
+    .modal-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 900px;
+    }
 
-      h1 {
-        font-size: 1.5rem;
-      }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1001;
+    }
+
+    .modal-close:hover {
+      color: var(--accent);
+    }
+
+    .modal embed {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
@@ -149,7 +177,7 @@
     </div>
     <section class="panel">
       <div class="buttons">
-        <a class="button primary full" href="tcr_menu.pdf" target="_blank" rel="noreferrer">Menu</a>
+        <button class="button primary full" id="menuBtn" onclick="openMenuModal()">Menu</button>
         <a class="button" href="tel:+9779856068630">Whatsapp</a>
         <a class="button" href="https://www.facebook.com/people/Triangle-coffee-restro/61576825995077/#" target="_blank" rel="noreferrer">Facebook</a>
        
@@ -165,7 +193,29 @@
     </section>
   </main>
 
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMenuModal()">&times;</span>
+      <embed id="menuEmbed" src="tcr_menu.pdf" type="application/pdf" />
+    </div>
+  </div>
+
   <script>
+    function openMenuModal() {
+      document.getElementById("menuModal").classList.add("active");
+    }
+
+    function closeMenuModal() {
+      document.getElementById("menuModal").classList.remove("active");
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("menuModal");
+      if (event.target === modal) {
+        closeMenuModal();
+      }
+    }
+
     const logoImage = document.getElementById("logoImage");
     const logoUrl = "logo.jpeg";
     
@@ -184,5 +234,6 @@
       dealImageSection.innerHTML = `<img src="${dealImageUrl}" alt="Special deal image" />`;
     }
   </script>
+  
 </body>
 </html>
