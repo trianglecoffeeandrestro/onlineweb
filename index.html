@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Restaurant A</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #f8fafc;
+      --muted: rgba(248, 250, 252, 0.72);
+      --accent: #f97316;
+      --accent-2: #14b8a6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(249, 115, 22, 0.26), transparent 30%),
+        radial-gradient(circle at top right, rgba(20, 184, 166, 0.22), transparent 32%),
+        linear-gradient(160deg, #08111f 0%, var(--bg) 45%, #091521 100%);
+      padding: 20px;
+    }
+
+    .shell {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(2, 6, 23, 0.35);
+      backdrop-filter: blur(16px);
+      padding: 18px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 65px;
+      padding: 17px 19px;
+      border-radius: 19px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), #fb7185);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .button.full {
+      grid-column: 1 / -1;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .image-section {
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      border: 1px dashed rgba(255, 255, 255, 0.24);
+      background:
+        linear-gradient(135deg, rgba(249, 115, 22, 0.14), rgba(20, 184, 166, 0.12)),
+        rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 24px;
+    }
+
+    .image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 24px;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin: 0 0 20px 0;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: normal;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .button.full {
+        grid-column: auto;
+      }
+
+      .image-section {
+        min-height: 240px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div style="margin-bottom: 24px; text-align: center;">
+      <img id="logoImage" src="logo.jpeg" alt="Triangle cafe & Restro logo" style="display: block; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.2); margin: 0 auto 16px; cursor: pointer;" />
+      <h1>Triangle cafe & Restro</h1>
+      <h3>Damauli,Tanahun</h3>
+    </div>
+    <section class="panel">
+      <div class="buttons">
+        <a class="button primary full" href="tcr_menu.pdf" target="_blank" rel="noreferrer">Menu</a>
+        <a class="button" href="tel:+9779856068630">Whatsapp</a>
+        <a class="button" href="https://www.facebook.com/people/Triangle-coffee-restro/61576825995077/#" target="_blank" rel="noreferrer">Facebook</a>
+       
+        <a class="button full" href="https://www.google.com/search?kgmid=/g/11xds_kcvt&hl=en-NP&q=Triangle+Cafe+%26+Restro&shem=rimspwouoe&shndl=30&source=sh/x/loc/osrp/m5/1&kgs=d471242a0c1a1249&utm_source=rimspwouoe,sh/x/loc/osrp/m5/1#lrd=0x39950700070fdfc9:0x65b5405e2b626e,3,,,," target="_blank" rel="noreferrer">Review Us</a>
+        <a class="button" href="https://www.tiktok.com/@trianglecoffee1?_r=1&_t=ZS-96LqcRQGLxs" target="_blank" rel="noreferrer">TikTok</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="image-section" id="dealImageSection" role="img" aria-label="Special deal image">
+        Special deal image placeholder
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const logoImage = document.getElementById("logoImage");
+    const logoUrl = "logo.jpeg";
+    
+    if (logoUrl) {
+      const img = new Image();
+      img.onload = function() {
+        logoImage.style.display = "block";
+      };
+      img.src = logoUrl;
+    }
+
+    const dealImageUrl = "triangle_special.jpg";
+    const dealImageSection = document.getElementById("dealImageSection");
+
+    if (dealImageUrl) {
+      dealImageSection.innerHTML = `<img src="${dealImageUrl}" alt="Special deal image" />`;
+    }
+  </script>
+</body>
+</html>
